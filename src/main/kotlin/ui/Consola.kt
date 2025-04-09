@@ -48,5 +48,9 @@ class Consola : IEntradaSalida {
         }
     }
 
+    override fun pausa(tiempo: Int) {
+        Thread.sleep(tiempo.toLong())
+    }
+
 }
 
