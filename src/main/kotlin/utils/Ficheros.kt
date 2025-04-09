@@ -44,9 +44,18 @@ open class Ficheros(private val consola: IEntradaSalida) :IUtilFicheros {
         }
     }
 
-    override fun crearFichero(ruta: String): Boolean {
+    override fun crearDirectorio(ruta: String): Boolean {
         return try {
             File(ruta).mkdir()
+        } catch (e: IOException) {
+            consola.mostrarError(e.message.toString())
+            false
+        }
+    }
+
+    override fun crearFichero(ruta: String): Boolean {
+        return try {
+            File(ruta).createNewFile()
         } catch (e: IOException) {
             consola.mostrarError(e.message.toString())
             false

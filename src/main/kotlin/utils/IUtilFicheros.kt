@@ -9,4 +9,5 @@ interface IUtilFicheros {
     fun existeFichero(ruta: String): Boolean
     fun existeDirectorio(ruta: String): Boolean
     fun crearFichero(ruta: String): Boolean
+    fun crearDirectorio(ruta: String): Boolean
 }

@@ -36,8 +36,8 @@ class Calculadora(
     fun iniciar() {
         do {
 
-            gestorFicheros.crearFichero(rutaArchivo)
-            rutaArchivo = "$rutaArchivo/log${LocalDateTime.now()}"
+            gestorFicheros.crearDirectorio(rutaArchivo)
+            rutaArchivo = "$rutaArchivo/log${LocalDateTime.now()}.txt"
 
             while (!gestorFicheros.existeFichero(rutaArchivo)) {
                 if (!gestorFicheros.existeFichero(rutaArchivo)){
