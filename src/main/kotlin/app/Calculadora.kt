@@ -19,6 +19,8 @@ class Calculadora(
     private val gestorFecha: IUtilFecha
 ) {
 
+    private var archivoCreado = false
+
     private fun pedirNumero(msj: String, msjError: String = "Número no válido!"): Double {
         return ui.pedirDouble(msj) ?: throw InfoCalcException(msjError)
     }
@@ -40,9 +42,12 @@ class Calculadora(
     fun iniciar() {
         do {
 
-            gestorFicheros.crearDirectorio(rutaArchivo)
-            val fechaHoy = LocalDateTime.now()
-            rutaArchivo = "$rutaArchivo/log${gestorFecha.formatearFecha(fechaHoy)}.txt"
+            if (!archivoCreado) {
+                gestorFicheros.crearDirectorio(rutaArchivo)
+                val fechaHoy = LocalDateTime.now()
+                rutaArchivo = "$rutaArchivo/log${gestorFecha.formatearFecha(fechaHoy)}.txt"
+                archivoCreado = true
+            }
 
             while (!gestorFicheros.existeFichero(rutaArchivo)) {
                 if (!gestorFicheros.existeFichero(rutaArchivo)){
