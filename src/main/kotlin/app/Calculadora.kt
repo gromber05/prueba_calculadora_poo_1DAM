@@ -4,15 +4,19 @@ import es.iesraprog2425.pruebaes.data.IRepoOperaciones
 import es.iesraprog2425.pruebaes.model.Operadores
 import es.iesraprog2425.pruebaes.service.IOperacionesService
 import es.iesraprog2425.pruebaes.ui.IEntradaSalida
+import es.iesraprog2425.pruebaes.utils.Fecha
+import es.iesraprog2425.pruebaes.utils.IUtilFecha
 import es.iesraprog2425.pruebaes.utils.IUtilFicheros
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class Calculadora(
     private val ui: IEntradaSalida,
     private val gestorFicheros: IUtilFicheros,
     private val gestorOperaciones: IOperacionesService,
-    private var rutaArchivo: String
+    private var rutaArchivo: String,
+    private val gestorFecha: IUtilFecha
 ) {
 
     private fun pedirNumero(msj: String, msjError: String = "Número no válido!"): Double {
@@ -37,7 +41,8 @@ class Calculadora(
         do {
 
             gestorFicheros.crearDirectorio(rutaArchivo)
-            rutaArchivo = "$rutaArchivo/log${LocalDateTime.now()}.txt"
+            val fechaHoy = LocalDateTime.now()
+            rutaArchivo = "$rutaArchivo/log${gestorFecha.formatearFecha(fechaHoy)}.txt"
 
             while (!gestorFicheros.existeFichero(rutaArchivo)) {
                 if (!gestorFicheros.existeFichero(rutaArchivo)){

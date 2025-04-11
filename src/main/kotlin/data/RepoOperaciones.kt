@@ -13,7 +13,7 @@ class RepoOperaciones(val rutaArchivo: String, private val fichero: IUtilFichero
 
     override fun guardarOperaciones(n1: Double, operador: Operadores, n2: Double, resutado: Double): Boolean {
         return if (fichero.existeFichero(rutaArchivo)) {
-            fichero.agregarLinea(rutaArchivo, serializar(args = mutableListOf(n1.toString(), operador.toString(), n2.toString())))
+            fichero.agregarLinea(rutaArchivo, serializar(args = mutableListOf(n1.toString(), operador.toString(), n2.toString(), resutado.toString())))
         } else false
     }
 }
