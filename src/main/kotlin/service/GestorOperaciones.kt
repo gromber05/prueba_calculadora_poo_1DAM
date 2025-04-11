@@ -6,12 +6,12 @@ import es.iesraprog2425.pruebaes.ui.IEntradaSalida
 
 class GestorOperaciones(private val repoOperaciones: IRepoOperaciones, private val consola: IEntradaSalida): IOperacionesService {
 
-    override fun guardarOperaciones(error: String): Boolean {
-        return repoOperaciones.guardarOperaciones(error)
+    override fun guardarOperaciones(error: String, rutaArchivo: String): Boolean {
+        return repoOperaciones.guardarOperaciones(error, rutaArchivo)
     }
 
-    override fun guardarOperaciones(n1: Double, operador: Operadores, n2: Double, resultado: Double): Boolean {
-        return repoOperaciones.guardarOperaciones(n1, operador, n2, resultado)
+    override fun guardarOperaciones(n1: Double, operador: Operadores, n2: Double, resultado: Double, rutaArchivo: String): Boolean {
+        return repoOperaciones.guardarOperaciones(n1, operador, n2, resultado, rutaArchivo)
     }
 
 

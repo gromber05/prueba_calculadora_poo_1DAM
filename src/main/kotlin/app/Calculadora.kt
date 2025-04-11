@@ -64,18 +64,18 @@ class Calculadora(
                 ui.limpiarPantalla()
                 val (numero1, operador, numero2) = pedirInfo()
                 val resultado = realizarCalculo(numero1, operador, numero2)
-                gestorOperaciones.guardarOperaciones(numero1, operador, numero2, resultado)
+                gestorOperaciones.guardarOperaciones(numero1, operador, numero2, resultado, rutaArchivo)
                 ui.mostrar("Resultado: %.2f".format(resultado))
             } catch (e: NumberFormatException) {
                 ui.mostrarError(e.message ?: "Se ha producido un error!")
                 // Ahora captura el nuevo error, que hacía que el programa no se ejecutase como se esperaba
-                gestorOperaciones.guardarOperaciones(e.message ?: "Se ha producido un error!")
+                gestorOperaciones.guardarOperaciones(e.message ?: "Se ha producido un error!", rutaArchivo)
             } catch (ie: InfoCalcException) {
                 ui.mostrarError(ie.message ?: "Se ha producido un error!")
-                gestorOperaciones.guardarOperaciones(ie.message ?: "Se ha producido un error!")
+                gestorOperaciones.guardarOperaciones(ie.message ?: "Se ha producido un error!", rutaArchivo)
             } catch (ex: Exception) {
                 ui.mostrarError(ex.message ?: "Se ha producido un error!")
-                gestorOperaciones.guardarOperaciones(ex.message ?: "Se ha producido un error!")
+                gestorOperaciones.guardarOperaciones(ex.message ?: "Se ha producido un error!", rutaArchivo)
             }
         } while (ui.preguntar())
         ui.limpiarPantalla()

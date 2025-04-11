@@ -14,7 +14,7 @@ fun main() {
     val consola = Consola()
     val gestorFicheros = Ficheros(consola)
 
-    val repoOperaciones = RepoOperaciones(rutaArchivo, gestorFicheros)
+    val repoOperaciones = RepoOperaciones(gestorFicheros)
 
     val gestorOperaciones = GestorOperaciones(repoOperaciones, consola)
     val gestorFecha = Fecha()
